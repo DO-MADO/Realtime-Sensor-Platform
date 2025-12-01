@@ -12,7 +12,7 @@
 ## ✨ 핵심 성과
 * **Full-Stack 아키텍처 설계:** [Edge Device ↔ Backend ↔ Frontend]로 이어지는 전체 데이터 파이프라인 단독 구축
 * **실시간성(Real-time) 확보:** WebSocket 기반의 멀티 채널 브로드캐스팅 구현 (Latency 최소화)
-* **안정적인 운영 환경:** `Systemd` + `Shell Script`를 활용한 **CI/CD 기반 배포 및 자동 복구(Auto-healing) 시스템** 구축
+* **안정적인 운영 환경:** `Systemd` + `Shell Script`를 활용한 **배포 자동화(CD) 및 자동 복구(Auto-healing) 시스템** 구축
 * **데이터 품질 관리:** **Pydantic**을 도입하여 I/O 데이터의 엄격한 유효성 검증(Validation) 및 타입 안정성 확보
 
 <br>
@@ -52,7 +52,7 @@
 | **🐍 백엔드 및 API 서버** | `app.py`, `pipeline.py` | API 라우팅, 데이터 스트림 파싱, JSON 직렬화 |
 | **🧠 데이터 전처리 엔진** | `iio_reader.c` | 고속 데이터 수집 및 전처리 (Filter/Smoothing) |
 | **🌐 프론트엔드 대시보드** | `index.html`, `app.js` | WebSocket 클라이언트 구현 및 차트 시각화 |
-| **🤖 배포 및 운영 자동화** | `deploy.sh`, `adcserver.service` | CI/CD 스크립트 및 데몬 서비스 관리 |
+| **🤖 배포 및 운영 자동화** | `deploy.sh`, `adcserver.service` | 자동 배포 스크립트 및 데몬 서비스 관리 |
 | **🔐 환경 설정 관리** | `.env` | IP, Port, Secret Key 등 민감 정보 관리 |
 
 

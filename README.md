@@ -162,7 +162,7 @@ systemctl status adcserver.service
 ### ▶ 3) 웹 대시보드 접속
 - 브라우저에서 실시간 스트리밍 대시보드에 접속합니다.
 <pre>
-http://<BOARD_IP>:8000
+http://{SERVER_IP}:8000
 </pre>
 
 <br>

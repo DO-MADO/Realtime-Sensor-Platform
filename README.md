@@ -1,19 +1,19 @@
-<h1>🚀 실시간 센서 데이터 시각화 및 원격 제어 웹 플랫폼 개발</h1> 
+<h1>🚀 실시간 대용량 데이터 시각화 및 원격 제어 플랫폼</h1> 
 
 ### *FastAPI + WebSocket + Web UI*
 
 
-센서 장비에서 수집된 실시간 데이터를
-<strong>FastAPI WebSocket → Web UI</strong>로 스트리밍하고,<br>
-UI에서 변경한 파라미터가 즉시 장비에 반영되는
-<strong>End-to-End 실시간 제어 시스템</strong>을 구축했습니다.
+고성능 센서 장비(Edge)에서 발생하는 <strong>초당 10만 건(100kS/s)의 대용량 데이터</strong>를  
+<strong>FastAPI WebSocket</strong>을 통해 웹 대시보드로 실시간 스트리밍하고,  
+사용자 인터랙션을 장비 제어 로직에 즉시 반영하는 <strong>End-to-End 양방향 제어 시스템</strong>입니다.
 
 <br>
 
-## ✨ 핵심 요약 (What I Built)
-- <strong>센싱(C/DSP) → FastAPI 서버 → WebSocket 스트리밍 → Web UI 그래프 시각화</strong> 전체 흐름을 단독으로 설계·구현
-- 실시간 파라미터 변경(샘플링·필터·계수) → 장비 즉시 반영
-- 배포, 재시작, 환경 변수 분리까지 <strong>운영 자동화 구축(systemd + deploy.sh)</strong>
+## ✨ 핵심 성과
+* **Full-Stack 아키텍처 설계:** [Edge Device ↔ Backend ↔ Frontend]로 이어지는 전체 데이터 파이프라인 단독 구축
+* **실시간성(Real-time) 확보:** WebSocket 기반의 멀티 채널 브로드캐스팅 구현 (Latency 최소화)
+* **안정적인 운영 환경:** `Systemd` + `Shell Script`를 활용한 **CI/CD 기반 배포 및 자동 복구(Auto-healing) 시스템** 구축
+* **데이터 품질 관리:** **Pydantic**을 도입하여 I/O 데이터의 엄격한 유효성 검증(Validation) 및 타입 안정성 확보
 
 <br>
 
@@ -25,60 +25,36 @@ UI에서 변경한 파라미터가 즉시 장비에 반영되는
 
 ## 🧩 주요 기능
 
-### 📡 1) 실시간 스트리밍 파이프라인
-- AD4858 8ch 실시간 데이터 → 10단계 DSP 처리 → JSON 직렬화
-- FastAPI WebSocket 멀티 스트림 브로드캐스트
+### 📡 1. 실시간 데이터 스트리밍 파이프라인
+* Edge Device의 Raw Data를 수집하여 **전처리(Pre-processing) 알고리즘** 수행
+* FastAPI의 비동기(Async) 처리를 통한 고성능 **JSON 직렬화 및 WebSocket 송출**
 
+### 🛠 2. RESTful API 기반 원격 제어
+* 웹 UI의 설정값(파라미터)을 REST API로 수신하여 장비 동작 제어
+* <strong>API 요청 검증(Request Validation)</strong>을 통해 잘못된 파라미터 유입 차단
 
-### 🛠 2) 원격 파라미터 제어 (양방향)
-- UI에서 변경한 옵션(필터·계수·샘플링레이트)을 REST API로 서버 전달
-- 서버 → DSP(C 프로세스)로 즉시 반영
+### 📊 3. SPA 기반 실시간 모니터링 대시보드
+* **Chart.js** 최적화를 통해 대량의 시계열 데이터를 끊김 없이 렌더링
+* 사용자 편의성을 고려한 직관적인 UI/UX 배치 및 다크모드 지원
 
-
-### 📊 3) 실시간 Web UI 시각화
-- Chart.js 기반 실시간 그래프
-- Raw/Stage별 그래프 탭
-- CSV 다운로드
-
-
-### 🤖 4) 운영/배포 자동화
-- <code>deploy.sh</code> 원클릭 배포 (PC → 보드)
-- <code>systemd</code> 부팅 자동 실행
-- <code>.env</code>로 민감정보 분리
+### 🤖 4. 배포 및 운영 자동화 (DevOps)
+* **`deploy.sh`**: 환경 변수(`.env`) 분리 및 원클릭 배포 스크립트 작성
+* **`systemd`**: 서비스 데몬 등록을 통한 부팅 시 자동 실행 및 프로세스 모니터링
   
 
 <br>
 
 
-<h2>🔧 구성 요소 & 역할</h2>
-<table border="1" cellpadding="6" cellspacing="0">
-<tr><th>구성 요소</th><th>파일</th><th>설명</th></tr>
-<tr>
-  <td>🧠 DSP 처리부 (C)</td>
-  <td><code>iio_reader.c</code></td>
-  <td>ADC → LPF/평균/다항식 보정 → Frame Packer</td>
-</tr>
-<tr>
-  <td>🐍 FastAPI 서버</td>
-  <td><code>app.py</code>, <code>pipeline.py</code></td>
-  <td>Stream 파싱, JSON 직렬화, WebSocket 송출</td>
-</tr>
-<tr>
-  <td>🌐 Web UI</td>
-  <td><code>index.html</code>, <code>app.js</code></td>
-  <td>실시간 그래프 표시 + 옵션 변경 UI</td>
-</tr>
-<tr>
-  <td>🤖 자동화 스크립트</td>
-  <td><code>deploy.sh</code>, <code>start.sh</code>, <code>adcserver.service</code></td>
-  <td>배포 자동화, systemd 실행</td>
-</tr>
-<tr>
-  <td>🔐 환경 구성</td>
-  <td><code>.env</code>, <code>.env.example</code></td>
-  <td>SSH/IP/서비스명 등 환경 변수</td>
-</tr>
-</table>
+## 🔧 구성 요소 및 역할
+
+| 구분 | 파일 | 핵심 역할 |
+| :--- | :--- | :--- |
+| **🐍 백엔드 및 API 서버** | `app.py`, `pipeline.py` | API 라우팅, 데이터 스트림 파싱, JSON 직렬화 |
+| **🧠 데이터 전처리 엔진** | `iio_reader.c` | 고속 데이터 수집 및 전처리 (Filter/Smoothing) |
+| **🌐 프론트엔드 대시보드** | `index.html`, `app.js` | WebSocket 클라이언트 구현 및 차트 시각화 |
+| **🤖 배포 및 운영 자동화** | `deploy.sh`, `adcserver.service` | CI/CD 스크립트 및 데몬 서비스 관리 |
+| **🔐 환경 설정 관리** | `.env` | IP, Port, Secret Key 등 민감 정보 관리 |
+
 
 <br>
 
@@ -103,7 +79,7 @@ UI에서 변경한 파라미터가 즉시 장비에 반영되는
       <td>
         • <b>FastAPI + Uvicorn</b> 비동기 서버 구축<br>
         • <b>WebSocket</b> 기반 실시간 양방향 통신 구현<br>
-        • <b>Pydantic</b>을 활용한 엄격한 데이터 유효성 검증
+        • <b>Pydantic</b>을 활용한 데이터 유효성 검증
       </td>
     </tr>
     <tr>
@@ -192,16 +168,12 @@ http://<BOARD_IP>:8000
 <br>
 
 
-## ✨ 결과 & 성과
 
-- <strong>End-to-End 실시간 스트리밍 파이프라인</strong> 단독 구성
-
-- UI ↔ 서버 ↔ 장비 간 <strong>양방향 제어</strong> 구조 완성
-
-- 총 5개 DSP 스테이지 스트림을 WebSocket으로 동시 송출 (저지연 구조)
-
-- 운영 자동화 구축으로 수동 재배포/재시작 문제 완전 해결
-
+## 📜 프로젝트 성과
+* **End-to-End 파이프라인 구축:** 데이터 발생부터 시각화까지 전 과정을 단독 설계하여 풀스택 역량 확보
+* **양방향 제어 구조 완성:** 웹 UI의 변경 사항이 백엔드를 거쳐 즉시 장비 로직에 반영되는 **실시간 제어 루프** 구현
+* **고성능 데이터 처리:** WebSocket 멀티 스트리밍을 통해 **초당 100k 샘플**의 데이터를 지연 없이(Low-latency) 웹으로 전송
+* **운영 자동화:** 수동 배포의 번거로움을 제거하고, `Systemd`를 도입하여 **무중단 운영 환경** 기초 마련
 
 
 <br>

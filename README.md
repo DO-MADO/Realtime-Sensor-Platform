@@ -1,4 +1,4 @@
-<h1>🚀 Real-Time DSP Signal Processing System (ZedBoard + FastAPI)</h1>
+<h1>🚀 실시간 센서 데이터 시각화 및 원격 제어 웹 플랫폼 개발 (ZedBoard + FastAPI)</h1>
 
 Zynq 기반 ZedBoard와 Python FastAPI 서버를 결합해,<br>
 📡 <b>실시간 신호처리 파이프라인(DSP)</b> <b> → </b> 💻 <b>웹 UI 시각화</b>로 이어지는<br>

@@ -17,8 +17,13 @@
 
 <br>
 
-## 🏗️ 시스템 아키텍처
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/85dbe282-314a-4906-acfa-4b2ba4370b13" />
+## 🏗️ 시스템 아키텍처 & PPT
+<img width="1920" height="1080" alt="20" src="https://github.com/user-attachments/assets/c4b5bae5-e2ec-493a-99db-8fc110334727" />
+<img width="1920" height="1080" alt="21" src="https://github.com/user-attachments/assets/b898f5ac-a987-4790-a166-078b58807f55" />
+<img width="1920" height="1080" alt="22" src="https://github.com/user-attachments/assets/7a82e412-f684-42d1-b27a-dff22777763b" />
+<img width="1920" height="1080" alt="23" src="https://github.com/user-attachments/assets/7b2beda7-fbad-4a15-bf44-d0421c813876" />
+<img width="1920" height="1080" alt="웹 모바일 풀스택 포트폴리오- 2 0VER (1)" src="https://github.com/user-attachments/assets/f7537d1b-b83a-46d9-9fba-21964adf4103" />
+
 
 <br>
 <br>
@@ -178,10 +183,10 @@ http://{SERVER_IP}:8000
 
 <br>
 
-<h2>📡 시스템 아키텍쳐 및 DSP 상세 파이프라인</h2>
+<h2>📡 DSP 상세 파이프라인</h2>
 
-<img width="1920" height="1080" alt="현재구성시스템아키텍쳐" src="https://github.com/user-attachments/assets/8eada624-0c1e-468e-aaab-0015253267ae" />
-  
+<img width="1920" height="1080" alt="21" src="https://github.com/user-attachments/assets/93e60e9d-ffc7-4646-b27e-299e1b60ecaa" />
+
 <img width="1013" height="1111" alt="보드DSP처리(C로직에서PYTHON)" src="https://github.com/user-attachments/assets/54c45ab9-de34-469b-a06a-26b6998fb8bf" />
 
 
@@ -218,10 +223,18 @@ http://{SERVER_IP}:8000
 <img width="1881" height="883" alt="Reset탭_설명" src="https://github.com/user-attachments/assets/b50e9adf-ad3c-42b3-9978-74929c861db4" />
 <img width="1905" height="909" alt="Save탭_설명" src="https://github.com/user-attachments/assets/b55961f1-ef23-4a0c-9e59-b15199f0f6a4" />
 
+<br>
+<br>
+<br>
+<h2>🖼️ 담당역할 및 성과</h2>
+<img width="1920" height="1080" alt="24" src="https://github.com/user-attachments/assets/8863c0e8-4994-4e98-a56c-dfdb73596349" />
+<img width="1920" height="1080" alt="25" src="https://github.com/user-attachments/assets/b6a638a7-c646-4469-9feb-4b762566c440" />
 
 
 <h2>📜 라이선스</h2>
 이 프로젝트는 사내 배포 및 테스트 목적으로 작성되었으며,<br>
 외부 배포 시에는 관련 라이선스 및 NDA 정책을 준수해야 합니다.
+
+
 
 

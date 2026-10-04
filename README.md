@@ -83,9 +83,9 @@ Chart.js의 표시 데이터 수를 제한하고 애니메이션을 비활성화
 <table width="100%">
   <thead>
     <tr>
-      <th width="140">계층</th>
-      <th width="700">기술</th>
-      <th width="280">적용 목적</th>
+      <th width="200">계층</th>
+      <th width="620">기술</th>
+      <th width="300">적용 목적</th>
     </tr>
   </thead>
   <tbody>
